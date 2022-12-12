@@ -351,7 +351,7 @@
                             </div>
                         <?php } else if (isset($_SESSION['username']) && (!$_SESSION['isAdmin'])) { ?>
                             <div class="card-footer bg-transparent text-center">
-                                <a href="#" class="btn btn-primary text-center">Buy Now</a>
+                                <a href="<?= BASE_URL ?>/cart/add/<?= $product['id'] ?>" class="btn btn-primary text-center">Buy Now</a>
                             </div>
                         <?php } ?>
                     </div>

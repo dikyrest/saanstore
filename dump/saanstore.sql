@@ -17,7 +17,7 @@ CREATE TABLE users (
     PRIMARY KEY (id)
 );
 
-CREATE TABLE cart (
+CREATE TABLE carts (
     id INT NOT NULL AUTO_INCREMENT,
     user_id INT NOT NULL,
     product_id INT NOT NULL,

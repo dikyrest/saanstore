@@ -44,6 +44,7 @@ class UserModel {
             if ($user_exists) {
                 $_SESSION['username'] = $user_exists['username'];
                 $_SESSION['isAdmin'] = $user_exists['isadmin'];
+                $_SESSION['user_id'] = $user_exists['id'];
                 header('location: ' . BASE_URL . '/');
             } else {
                 $_SESSION['error'] = 'Username atau password salah';

@@ -6,6 +6,13 @@ class Cart extends Controller {
     }
 
     public function index() {
-        $this->view('cart/index');
+        $cart = $this->model('CartModel')->getCartByUserId($_SESSION['user_id']);
+        $cartnum = sizeof($cart) ?? 0;
+        $this->view('cart/index', ['cart' => $cart, 'cartnum' => $cartnum]);
+    }
+
+    public function add($product_id) {
+        $this->model('CartModel')->addCart($_SESSION['user_id'], $product_id);
+        header('Location: ' . BASE_URL . '/cart');
     }
 }

@@ -2,6 +2,9 @@
 <?php require_once __DIR__ . "/../templates/navbar.php" ?>
 
 <div class="container py-5">
+    <div class="row">
+        <h1>Users</h1>
+    </div>
     <table class="table">
         <thead>
             <tr>

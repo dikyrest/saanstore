@@ -24,7 +24,7 @@
                 <div class="d-flex">
                     <a href="<?= BASE_URL ?>/cart" class="btn btn-outline-light me-2">
                         <i class="fas fa-shopping-cart"></i>
-                        <span class="badge bg-danger rounded-pill">0</span>
+                        <span class="badge bg-danger rounded-pill"><?= $data['cartnum'] ?></span>
                     </a>
                 </div>
             <?php } ?>
