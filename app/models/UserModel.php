@@ -71,7 +71,7 @@ class UserModel {
                 $_SESSION['error'] = 'Username sudah terdaftar';
                 header('location: ' . BASE_URL . '/register');
             } else {
-                $this->db->query("INSERT INTO $this->table (username, email, telephone, `password`) VALUES (:username, :email, :telephone, :`password`)");
+                $this->db->query("INSERT INTO $this->table (username, email, telephone, `password`) VALUES (:username, :email, :telephone, :password)");
                 $this->db->bind('username', $username);
                 $this->db->bind('email', $email);
                 $this->db->bind('telephone', $telephone);
