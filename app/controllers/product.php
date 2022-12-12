@@ -22,8 +22,8 @@ class Product extends Controller
         $this->model('ProductModel')->editProduct($id);
     }
     
-    public function delete()
+    public function delete($id)
     {
-        $this->view('product/delete');
+        $this->model('ProductModel')->deleteProduct($id);
     }
 }
