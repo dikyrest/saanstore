@@ -61,6 +61,7 @@ class ProductModel {
         $name = $_POST['name'];
         $price = $_POST['price'];
         $description = $_POST['description'];
+        $old_image = $this->getProductById($id)['image'];
 
         $this->db->query("UPDATE $this->table SET `name` = :name, price = :price, `description` = :description, `image` = :image WHERE id = :id");
         $this->db->bind('name', $name);
@@ -90,6 +91,8 @@ class ProductModel {
                     }
                 }
             }
+        } else {
+            $this->db->bind('image', $old_image);
         }
 
         $this->db->execute();

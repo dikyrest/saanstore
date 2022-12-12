@@ -19,6 +19,12 @@ class Product extends Controller
     
     public function edit($id)
     {
+        $product = $this->model('ProductModel')->getProductById($id);
+        $this->view('product/edit', ['product' => $product]);
+    }
+
+    public function update($id)
+    {
         $this->model('ProductModel')->editProduct($id);
     }
     

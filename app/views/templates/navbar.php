@@ -1,6 +1,9 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary navbar-fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Saanstore</a>
+        <a class="navbar-brand" href="#">
+            <img src="<?= BASE_URL ?>/public/images/saanstore wm.png" alt="..." height="36">
+            Saanstore
+        </a>
         <div class="collapse navbar-collapse">
             <div class="navbar-nav">
                 <a class="nav-link" href="<?= BASE_URL ?>/#home">Home</a>

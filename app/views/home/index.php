@@ -345,8 +345,8 @@
                         <?php if (isset($_SESSION['username']) && ($_SESSION['isAdmin'])) { ?>
                             <div class="card-footer bg-transparent text-center">
                                 <div class="d-flex justify-content-around">
-                                    <a href="<?= BASE_URL ?>/product/edit/ <?= $product['id'] ?>" class="btn btn-primary text-center">Edit</a>
-                                    <a href="<?= BASE_URL ?>/product/delete/ <?= $product['id'] ?>" class="btn btn-danger text-center">Delete</a>
+                                    <a href="<?= BASE_URL ?>/product/edit/<?= $product['id'] ?>" class="btn btn-primary text-center">Edit</a>
+                                    <a href="<?= BASE_URL ?>/product/delete/<?= $product['id'] ?>" class="btn btn-danger text-center">Delete</a>
                                 </div>
                             </div>
                         <?php } else if (isset($_SESSION['username']) && (!$_SESSION['isAdmin'])) { ?>
@@ -412,5 +412,13 @@
     </div>
 </div>
 </section>
+
+<div class="container py-5">
+    <h3>Customer Rating</h3>
+    <p>Based on category product</p>
+	<div class="progress">
+		<div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+	</div>
+</div>
 
 <?php require_once __DIR__ . "/../templates/footer.php" ?>
