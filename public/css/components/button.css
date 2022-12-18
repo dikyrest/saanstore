@@ -1,0 +1,9 @@
+.submit-button {
+    background-color: var(--bg-tertiary) !important;
+    color: var(--text-primary-black) !important;
+}
+
+.submit-button:hover {
+    background-color: var(--bg-primary) !important;
+    color: var(--text-primary) !important;
+}

@@ -3,11 +3,11 @@
 
 <div class="container content-container py-5">
     <div class="row">
-        <h1>Cart</h1>
+        <h1>Orders</h1>
     </div>
-    <?php if (empty($data['cart'])) { ?>
+    <?php if (empty($data['orders'])) { ?>
         <div class="alert alert-danger" role="alert">
-            Cart is empty
+            No orders
         </div>
     <?php } else { ?>
     <table class="table table-striped">
@@ -16,27 +16,26 @@
                 <th scope="col">No</th>
                 <th scope="col">Product</th>
                 <th scope="col">Quantity</th>
-                <th scope="col">Price</th>
                 <th scope="col">Total</th>
-                <th scope="col">Action</th>
+                <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>
             <?php $i = 1; ?>
-            <?php foreach ($data['cart'] as $product) : ?>
+            <?php foreach ($data['orders'] as $product) : ?>
                 <tr>
                     <th scope="row"><?= $i ?></th>
                     <td><?= $product['name'] ?></td>
                     <td><?= $product['quantity'] ?></td>
-                    <td><?= $product['price'] ?></td>
-                    <td><?= $product['quantity'] * $product['price'] ?></td>
+                    <td><?= $product['total'] ?></td>
                     <td>
-                        <a href="<?= BASE_URL ?>/cart/checkout/<?= $product['product_id'] ?>" class="btn btn-success">
-                            <i class="fas fa-check"></i>
-                        </a>
-                        <a href="<?= BASE_URL ?>/cart/delete/<?= $product['product_id'] ?>" class="btn btn-danger">
-                            <i class="fas fa-trash"></i>
-                        </a>
+                        <?php if ($product['status'] == 'pending') { ?>
+                            <span class="badge bg-warning">Pending</span>
+                        <?php } else if ($product['status'] == 'completed') { ?>
+                            <span class="badge bg-success">Completed</span>
+                        <?php } else if ($product['status'] == 'declined') { ?>
+                            <span class="badge bg-danger">Declined</span>
+                        <?php } ?>
                     </td>
                 </tr>
                 <?php $i++; ?>

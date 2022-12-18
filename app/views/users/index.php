@@ -1,11 +1,16 @@
 <?php require_once __DIR__ . "/../templates/header.php" ?>
 <?php require_once __DIR__ . "/../templates/navbar.php" ?>
 
-<div class="container py-5">
+<div class="container content-container py-5">
     <div class="row">
         <h1>Users</h1>
     </div>
-    <table class="table">
+    <?php if (empty($data['users'])) { ?>
+        <div class="alert alert-danger" role="alert">
+            Cart is empty
+        </div>
+    <?php } else { ?>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th scope="col">No</th>
@@ -29,7 +34,9 @@
                     <td><?= $user['email'] ?></td>
                     <td><?= $user['telephone'] ?></td>
                     <td>
-                        <a href="<?= BASE_URL ?>/users/delete/<?= $user['id'] ?>" class="btn btn-danger">Delete</a>
+                        <a href="<?= BASE_URL ?>/users/delete/<?= $user['user_id'] ?>" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </a>
                     </td>
                 </tr>
                 <?php $i++; ?>
@@ -37,6 +44,7 @@
             <?php } ?>
         </tbody>
     </table>
+    <?php } ?>
 </div>
 
 <?php require_once __DIR__ . "/../templates/footer.php" ?>

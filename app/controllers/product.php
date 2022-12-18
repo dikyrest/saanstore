@@ -11,16 +11,21 @@ class Product extends Controller
         $products = $this->model('ProductModel')->getAllProducts();
         $this->view('product/index', ['products' => $products]);
     }
-    
+
     public function add()
     {
-        $this->model('ProductModel')->addProduct();
+        $this->view('product/add');
     }
     
     public function edit($id)
     {
         $product = $this->model('ProductModel')->getProductById($id);
         $this->view('product/edit', ['product' => $product]);
+    }
+
+    public function create()
+    {
+        $this->model('ProductModel')->addProduct();
     }
 
     public function update($id)

@@ -1,0 +1,27 @@
+.navbar {
+    background-color: var(--bg-primary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);;
+    width: 100%;
+    top: 0;
+    position: fixed !important;
+    z-index: 100;
+}
+
+.content-container {
+    margin-top: 60px;
+}
+
+.footer {
+    background-color: var(--bg-secondary);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    bottom: 0;
+}
+
+.copyright {
+    background-color: var(--bg-primary);
+    color: var(--text-primary-black);
+    font-size: 14px;
+    padding: 10px 0;
+    text-align: center;
+}

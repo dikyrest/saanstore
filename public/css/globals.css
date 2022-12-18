@@ -1,0 +1,12 @@
+body {
+    background-color: var(--bg-body) !important;
+    color: var(--text-primary);
+    font-weight: normal;
+    margin: 0;
+}
+
+h1 {
+    font-family: monaco, monospace !important;
+    font-weight: 600 !important;
+    text-align: center;
+}

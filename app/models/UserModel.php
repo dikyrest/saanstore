@@ -26,9 +26,9 @@ class UserModel {
         return $this->db->resultSet();
     }
 
-    public function deleteUser($id) {
-        $this->db->query("DELETE FROM $this->table WHERE id = :id");
-        $this->db->bind('id', $id);
+    public function deleteUser($user_id) {
+        $this->db->query("DELETE FROM $this->table WHERE user_id = :user_id");
+        $this->db->bind('user_id', $user_id);
         $this->db->execute();
     }
 
@@ -42,9 +42,10 @@ class UserModel {
         } else {
             $user_exists = $this->getUserByUsernamePassword($username, $password);
             if ($user_exists) {
+                unset($_SESSION['error']);
                 $_SESSION['username'] = $user_exists['username'];
                 $_SESSION['isAdmin'] = $user_exists['isadmin'];
-                $_SESSION['user_id'] = $user_exists['id'];
+                $_SESSION['user_id'] = $user_exists['user_id'];
                 header('location: ' . BASE_URL . '/');
             } else {
                 $_SESSION['error'] = 'Username atau password salah';
@@ -78,6 +79,7 @@ class UserModel {
                 $this->db->bind('telephone', $telephone);
                 $this->db->bind('password', $password);
                 $this->db->execute();
+                unset($_SESSION['error']);
                 $_SESSION['success'] = 'Pendaftaran berhasil';
                 header('location: ' . BASE_URL . '/login');
             }

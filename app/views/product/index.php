@@ -1,32 +1,53 @@
 <?php require_once __DIR__ . "/../templates/header.php" ?>
 <?php require_once __DIR__ . "/../templates/navbar.php" ?>
 
-<div class="container py-5">
+<div class="container content-container py-5">
     <div class="row">
-        <div class="col-md-12">
-            <h1>Add Product</h1>
-        </div>
+        <h1>Products</h1>
     </div>
-    <div>
-        <form action="<?= BASE_URL ?>/product/add" method="post" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name" name="name" required>
-            </div>
-            <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" id="price" name="price" required>
-            </div>
-            <div class="mb-3">
-                <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" name="description" rows="3" required></textarea>
-            </div>
-            <div class="mb-3">
-                <label for="image" class="form-label">Image</label>
-                <input class="form-control" type="file" id="image" name="image" accept=".jpg, .jpeg, .png" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+    <?php if (empty($data['products'])) { ?>
+        <div class="alert alert-danger" role="alert">
+            No products
+        </div>
+    <?php } else { ?>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th scope="col">No</th>
+                <th scope="col">Image</th>
+                <th scope="col">Name</th>
+                <th scope="col">Price</th>
+                <th scope="col">Category</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1; ?>
+            <?php foreach ($data['products'] as $product) : ?>
+                <tr>
+                    <th scope="row"><?= $i ?></th>
+                    <td><img src="<?= BASE_URL ?>/<?= $product['image'] ?>" alt="" width="100"></td>
+                    <td><?= $product['name'] ?></td>
+                    <td>Rp<?= $product['price'] ?></td>
+                    <td><?= $product['category'] ?></td>
+                    <td><?= $product['description'] ?></td>
+                    <td>
+                        <a href="<?= BASE_URL ?>/product/edit/<?= $product['product_id'] ?>" class="btn btn-warning">
+                            <i class="fas fa-edit"></i>
+                        </a>
+                        <a href="<?= BASE_URL ?>/product/delete/<?= $product['product_id'] ?>" class="btn btn-danger">
+                            <i class="fas fa-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <?php $i++; ?>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+    <?php } ?>
+    <div class="row pt-3">
+        <a href="<?= BASE_URL ?>/product/add" class="btn btn-primary">Add Product</a>
     </div>
 </div>
 

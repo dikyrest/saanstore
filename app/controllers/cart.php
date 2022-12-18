@@ -15,4 +15,14 @@ class Cart extends Controller {
         $this->model('CartModel')->addCart($_SESSION['user_id'], $product_id);
         header('Location: ' . BASE_URL . '/cart');
     }
+
+    public function delete($product_id) {
+        $this->model('CartModel')->deleteCart($_SESSION['user_id'], $product_id);
+        header('Location: ' . BASE_URL . '/cart');
+    }
+
+    public function checkout($product_id) {
+        $this->model('CartModel')->checkoutCart($_SESSION['user_id'], $product_id);
+        header('Location: ' . BASE_URL . '/cart');
+    }
 }

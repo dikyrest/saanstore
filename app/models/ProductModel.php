@@ -13,20 +13,22 @@ class ProductModel {
         return $this->db->resultSet();
     }
 
-    public function getProductById($id) {
-        $this->db->query("SELECT * FROM $this->table WHERE id = :id");
-        $this->db->bind('id', $id);
+    public function getProductById($product_id) {
+        $this->db->query("SELECT * FROM $this->table WHERE product_id = :product_id");
+        $this->db->bind('product_id', $product_id);
         return $this->db->single();
     }
 
     public function addProduct() {
         $name = $_POST['name'];
         $price = $_POST['price'];
+        $category = $_POST['category'];
         $description = $_POST['description'];
 
-        $this->db->query("INSERT INTO $this->table (`name`, price, `description`, `image`) VALUES (:name, :price, :description, :image)");
+        $this->db->query("INSERT INTO $this->table (`name`, price, category, `description`, `image`) VALUES (:name, :price, :category, :description, :image)");
         $this->db->bind('name', $name);
         $this->db->bind('price', $price);
+        $this->db->bind('category', $category);
         $this->db->bind('description', $description);
 
         if ($_FILES['image']['error'] === 0) {
@@ -57,17 +59,19 @@ class ProductModel {
         header('location: ' . BASE_URL . '/');
     }
 
-    public function editProduct($id) {
+    public function editProduct($product_id) {
         $name = $_POST['name'];
         $price = $_POST['price'];
+        $category = $_POST['category'];
         $description = $_POST['description'];
-        $old_image = $this->getProductById($id)['image'];
+        $old_image = $this->getProductById($product_id)['image'];
 
-        $this->db->query("UPDATE $this->table SET `name` = :name, price = :price, `description` = :description, `image` = :image WHERE id = :id");
+        $this->db->query("UPDATE $this->table SET `name` = :name, price = :price, category = :category, `description` = :description, `image` = :image WHERE product_id = :product_id");
         $this->db->bind('name', $name);
         $this->db->bind('price', $price);
+        $this->db->bind('category', $category);
         $this->db->bind('description', $description);
-        $this->db->bind('id', $id);
+        $this->db->bind('product_id', $product_id);
 
         if ($_FILES['image']['error'] === 0) {
             $name = $_FILES['image']['name'];
@@ -99,9 +103,9 @@ class ProductModel {
         header('location: ' . BASE_URL . '/');
     }
 
-    public function deleteProduct($id) {
-        $this->db->query("DELETE FROM $this->table WHERE id = :id");
-        $this->db->bind('id', $id);
+    public function deleteProduct($product_id) {
+        $this->db->query("DELETE FROM $this->table WHERE product_id = :product_id");
+        $this->db->bind('product_id', $product_id);
         $this->db->execute();
         header('location: ' . BASE_URL . '/');
     }
